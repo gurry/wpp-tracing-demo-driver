@@ -1,0 +1,29 @@
+[package]
+name = "wpp-tracing-demo-driver"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[package.metadata.wdk.driver-model]
+driver-type = "KMDF"
+kmdf-version-major = 1
+target-kmdf-version-minor = 33
+
+[lib]
+crate-type = ["cdylib"]
+test = false
+
+[build-dependencies]
+wdk-build = { git = "https://github.com/krishnakumar4a4/windows-drivers-rs", branch = "wdf-wpp-v2-rust-native-frontend-impl" }
+
+[dependencies]
+wdf = { git = "https://github.com/krishnakumar4a4/windows-drivers-rs", branch = "wdf-wpp-v2-rust-native-frontend-impl" }
+wpp = { git = "https://github.com/krishnakumar4a4/windows-drivers-rs", branch = "wdf-wpp-v2-rust-native-frontend-impl", features = ["kernel_mode"] }
+
+[profile.dev]
+panic = "abort"
+lto = true
+
+[profile.release]
+panic = "abort"
+lto = true
