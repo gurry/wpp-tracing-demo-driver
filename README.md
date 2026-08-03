@@ -117,7 +117,7 @@ And below is the code that it gets expanded to. The actual expansion is much big
             // by `__wpp_schema` above.
             // Note the `EVENT_DESCRIPTER::Id` field with value 39561.
             // This is passed to `wpp::etw::write`. It is the same ID
-            // that wss passed to `codeview_annoation` call above. It
+            // that was passed to `codeview_annoation` call above. It
             // helps the decoding tool match the runtime traces with
             // the metadata in the PDB and construct a human readable log
             {
