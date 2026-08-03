@@ -11,7 +11,7 @@ A minimal Windows driver demonstrating [WPP software tracing](https://learn.micr
 | Windows SDK | 10.0.26100.0 | https://learn.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads |
 | WDK | 10.0.26100.0 | https://learn.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads |
 | clang | 17 | `winget install -i LLVM.LLVM --version 17.0.6 --force` |
-| Rust toolchain | N/A | Custom build of rustc containing the `codeview_annotation` intrinsic. Contact the repo author to obtain a build |
+| Rust toolchain | N/A | Custom build of rustc containing the `codeview_annotation` intrinsic. Contact the repo author to obtain a build or build from [this PR](https://github.com/rust-lang/rust/pull/160285) yourself |
 | `cargo-expand` | `cargo install cargo-expand` | `cargo install cargo-expand` |
 
 ### Build
