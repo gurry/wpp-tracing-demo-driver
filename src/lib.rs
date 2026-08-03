@@ -19,7 +19,6 @@ wpp_control_guids!(
 
 // A driver callback that will be called by the OS when there's
 // an I/O request
-#[allow(dead_code)]
 fn evt_io_default(_queue: &IoQueue, _request: Request) {
     // Handle IO here...
 
