@@ -67,7 +67,7 @@ And below is the code that it gets expanded to. The actual expansion is much big
             let __b1 = ::wpp::WppField::as_bytes(&__f1);
 
             // `__wpp_schema`  is just a wrapper over the call
-            // to `codeview_annotation`. It only purpose is to 
+            // to `codeview_annotation`. Its only purpose is to 
             // help deduce the type of args `byte_count` and 
             // `elapsed_ms` in the source code above via
             // monomorphization.  The `wpp::WppField` trait is
@@ -80,13 +80,10 @@ And below is the code that it gets expanded to. The actual expansion is much big
                 __f0: &T0,
                 __f1: &T1,
             ) {
-                {
-                    // The call to the rustc intrinsic we are proposing
-                    // It gets lowered to the `llvm.codeview.annotation`
-                    // already present in LLVM and writes all its args
-                    // to the PDB as debug record of type `S_ANNOTATION`
-                    ::core::intrinsics::codeview_annotation(
-                        &[
+                struct Args<T0: ::wpp::WppField, T1: ::wpp::WppField>;
+
+                impl<T0: ::wpp::WppField, T1: ::wpp::WppField> CodeViewAnnotationArgs for Args<T0, T1> {
+                    const Args: &[&str]: &[
                             // First three args are boilerplate
                             "WPP_EVENT",
                             "SampleDriver",
@@ -99,8 +96,13 @@ And below is the code that it gets expanded to. The actual expansion is much big
                             T0::TYPE_NAME,              // Type of arg0 (e.g. "u64")
                             T1::TYPE_NAME,              // Type of arg1 (e.g. "f64")
                         ],
-                    )
-                };
+                }
+                
+                // The call to the rustc intrinsic we are proposing.
+                // It gets lowered to the `llvm.codeview.annotation`
+                // already present in LLVM and writes all its args
+                // to the PDB as debug record of type `S_ANNOTATION`
+                codeview_annotation::<Strings::<T0, T1>>();                
             }
 
 
