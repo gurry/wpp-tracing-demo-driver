@@ -102,7 +102,7 @@ And below is the code that it gets expanded to. The actual expansion is much big
                 // It gets lowered to the `llvm.codeview.annotation`
                 // already present in LLVM and writes all its args
                 // to the PDB as debug record of type `S_ANNOTATION`
-                codeview_annotation::<Strings::<T0, T1>>();                
+                core::hint::codeview_annotation::<Strings::<T0, T1>>();                
             }
 
 
